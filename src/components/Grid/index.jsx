@@ -8,11 +8,12 @@ import Grid from '@mui/material/Grid';
 const GridComponent = ({ children, mt }) => {
     const myRef = React.createRef();
     useEffect(() => {
+        console.log(myRef?.current);
         myRef?.current?.scrollTo(0, 0)
     });
 
     return (
-        <Box sx={{ mt, height: 'calc(100vh - 18rem)', 'overflow-y': 'auto' }}>
+        <Box sx={{ 'overflow-y': 'auto' }}>
             <Grid
                 ref={myRef}
                 container

@@ -21,11 +21,7 @@ const api = (baseURL, config) => {
     return axiosApi(path, mergedOptions).then(resp => resp.data)
   }
 
-  axiosApi.interceptors.response.use(null, onResponseError)
-
   return axiosApi
 }
-
-export const onResponseError = error => Promise.reject(error)
 
 export default api

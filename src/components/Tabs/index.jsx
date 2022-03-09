@@ -3,7 +3,6 @@ import React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-//import { format } from 'date-fns-tz';
 
 export default function ScrollableTabsButtonForce({ data, onSelect, selectedDay }) {
 
@@ -14,7 +13,7 @@ export default function ScrollableTabsButtonForce({ data, onSelect, selectedDay 
     const renderItems = () => data.map((item, key) => <Tab component="p" label={item.label} value={item.value} key={key} />)
 
     return (
-        <Box >
+        <Box sx={{ display: 'flex', 'justify-content': 'center' }}>
             <Tabs
                 value={selectedDay}
                 onChange={handleChange}

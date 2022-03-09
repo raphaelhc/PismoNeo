@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 //import routes from '../../routes'
 import { AppProvider } from './AppContext'
-import Home from 'containers/Home'
+import { LoadingProvider } from './LoadingContext'
+import ListByRange from 'containers/ListByRange'
+import About from 'containers/About'
+import CssBaseline from '@mui/material/CssBaseline';
 
 const Main = () => (
-    <AppProvider>
-        <Routes>
-            <Route path="/" element={<Home />}></Route>
-        </Routes>
-    </AppProvider>
+    <LoadingProvider>
+        <AppProvider>
+            <Fragment>
+                <CssBaseline />
+                <Routes>
+                    <Route path="/" element={<About />}></Route>
+                    <Route path="/lista-por-intervalo" element={<ListByRange />}></Route>
+                </Routes>
+            </Fragment>
+        </AppProvider>
+    </LoadingProvider>
 )
 
 export default Main

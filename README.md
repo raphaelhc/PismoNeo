@@ -45,5 +45,3 @@ The web server will be accessible on port [3000](http://localhost:3000)
 - **src/components**: Components of React to be shared and reused in the project;
 - **src/common**: Utilities, resources, constants, assets, configurations, i18n and others;
 - **src/containers**: Page components that apply business knowledge and present themselves as pages;
-- **src/routes**: Routes of app to be used by SPA and user navigation;
-- **src/store**: State configuration with Redux;

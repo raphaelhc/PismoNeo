@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import addWeeks from 'date-fns/addWeeks';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -16,6 +15,7 @@ function getWeeksAfter(date, amount) {
 }
 
 const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
+    // eslint-disable-next-line no-unused-vars
     const [value, setValue] = React.useState([null, null]);
 
     const seta = (newValue) => {
@@ -38,11 +38,11 @@ const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
                     }}
                     renderInput={(startProps, endProps) => (
                         <React.Fragment>
-                            <TextField {...startProps} size="small" color="primary" focused />
+                            <TextField {...startProps} size="small" color="primary" role="textbox" focused />
                             <Box sx={{ mx: 1 }}>
                                 <Typography color='primary' >to</Typography>
                             </Box>
-                            <TextField {...endProps} size="small" color="primary" focused />
+                            <TextField {...endProps} size="small" color="primary" role="textbox" focused />
                         </React.Fragment>
                     )}
                 />
@@ -53,5 +53,10 @@ const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
         </LocalizationProvider>
     );
 }
+
+MinMaxDateRangePicker.propTypes = {
+    filterValue: PropTypes.array,
+    setfilterValue: PropTypes.func
+};
 
 export default memo(MinMaxDateRangePicker)

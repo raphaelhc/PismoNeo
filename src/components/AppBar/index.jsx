@@ -8,6 +8,7 @@ import { useScreenMode } from 'containers/Main/AppContext'
 import Typography from '@mui/material/Typography';
 import { ToolbarStyled, BoxStyled } from './styles'
 import { themeModeArray } from 'common/theme'
+import Menu from 'components/Menu'
 
 const AppBar = ({ title }) => {
     const { screenMode, setScreenMode } = useScreenMode(themeModeArray[0]);
@@ -18,6 +19,7 @@ const AppBar = ({ title }) => {
         <Bar position="relative" role="BarTopLevelElement">
             <ToolbarStyled>
                 <BoxStyled sx={{ display: 'flex', 'alignItems': 'center' }}>
+                    <Menu></Menu>
                     <Typography role="heading" component="div" variant="h5" sx={{ ml: 1, 'minWidth': '9rem' }}>{title}</Typography>
                 </BoxStyled>
                 <div>

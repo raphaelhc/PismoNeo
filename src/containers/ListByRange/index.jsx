@@ -62,8 +62,7 @@ const ListByRange = () => {
   const renderPlaceHolder = () => <Placeholder icon={SearchIconComponent} text="Selecione um intervalo de até 7 (sete) dias para pesquisar os objetos" />
 
   return (
-    <div className='container' id="container">
-
+    <div className='container'>
       <AppBar title='Near Earth Object'></AppBar>
       <PageBar pageName={'Pesquisa de objetos por data'} >
         <Filter onSearch={onSearch} setfilterValue={onSetFilter} filterValue={filterValue} />

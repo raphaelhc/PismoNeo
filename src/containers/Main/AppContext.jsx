@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles';

@@ -4,15 +4,12 @@ import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Modal from 'components/Modal'
+import { hasHazardousText } from './constant'
+import { getEstimatedDiameter } from './helper'
 
 
 function ObjectDetail(props) {
     const { onClose, open, itemSelected } = props;
-
-    const hasHazardousText = {
-        true: { label: "Sim", color: 'error' },
-        false: { label: "Não", color: 'default' }
-    }
 
     const renderItem = (label, value) => {
         return (
@@ -20,7 +17,7 @@ function ObjectDetail(props) {
                 <Typography component="span" sx={{ mb: 1.5 }} color="text.secondary">
                     {label}:
                 </Typography>
-                <Typography component="span" sx={{ ml: 1, 'font-weight': '600' }} variant="subtitle2" gutterBottom>
+                <Typography component="span" sx={{ ml: 1, 'fontWeight': '600' }} variant="subtitle2" gutterBottom>
                     {value}
                 </Typography>
             </div>
@@ -31,12 +28,18 @@ function ObjectDetail(props) {
     return itemSelected && (
         <Modal title={itemSelected.name} onClose={onClose} open={open}>
             {renderItem('Magnitude absoluta', `${Number(itemSelected?.absolute_magnitude_h)} h`)}
-            {renderItem('Diâmetro máximo estimado', `${Number(itemSelected?.estimated_diameter?.kilometers?.estimated_diameter_max).toFixed(3)} km`)}
-            {renderItem('Diâmetro mínimo estimado', `${Number(itemSelected?.estimated_diameter?.kilometers?.estimated_diameter_min).toFixed(3)} km`)}
+            {renderItem('Diâmetro máximo estimado', `${getEstimatedDiameter(itemSelected).max} km`)}
+            {renderItem('Diâmetro mínimo estimado', `${getEstimatedDiameter(itemSelected).min} km`)}
             <Typography component="span" sx={{ mb: 1.5 }} color="text.secondary">
                 É potencialmente perigoso?:
             </Typography>
-            <Typography color={hasHazardousText[itemSelected?.is_potentially_hazardous_asteroid].color} component="span" sx={{ ml: 1, 'font-weight': '600' }} variant="subtitle2" gutterBottom>
+            <Typography
+                color={hasHazardousText[itemSelected?.is_potentially_hazardous_asteroid].color}
+                component="span"
+                sx={{ ml: 1, 'fontWeight': '600' }}
+                variant="subtitle2"
+                gutterBottom
+            >
                 {hasHazardousText[itemSelected?.is_potentially_hazardous_asteroid].label}
             </Typography>
             <br />

@@ -1,20 +1,15 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { ReactComponent as MenuIconComponent } from 'assets/menu.svg';
 import { useNavigate } from 'react-router-dom';
-
-const options = [
-    { label: 'Sobre', value: '/' },
-    { label: 'Lista por intervalo', value: '/lista-por-intervalo' }
-];
+import { menu } from 'common/menu'
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu(props) {
-    console.log(props);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+const LongMenu = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
     const handleClick = (event) => {
@@ -29,6 +24,7 @@ export default function LongMenu(props) {
         <div>
             <IconButton
                 aria-label="more"
+                role="menuButton"
                 id="long-button"
                 aria-controls={open ? 'long-menu' : undefined}
                 aria-expanded={open ? 'true' : undefined}
@@ -40,6 +36,7 @@ export default function LongMenu(props) {
             </IconButton>
             <Menu
                 id="long-menu"
+                role="menuComponent"
                 MenuListProps={{
                     'aria-labelledby': 'long-button',
                 }}
@@ -53,8 +50,8 @@ export default function LongMenu(props) {
                     },
                 }}
             >
-                {options.map((option) => (
-                    <MenuItem key={option.value} onClick={() => handleClose(option.value)}>
+                {menu.map((option) => (
+                    <MenuItem key={option.value} onClick={() => handleClose(option.value)} role="menuItem">
                         {option.label}
                     </MenuItem>
                 ))}
@@ -62,3 +59,5 @@ export default function LongMenu(props) {
         </div>
     );
 }
+
+export default LongMenu

@@ -1,16 +1,17 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { memo } from 'react'
-import Container from '@mui/material/Container';
-
-
+import PropTypes from 'prop-types';
+import { ContainerStyled } from './styles'
 
 const PageContent = ({ children }) => {
     return (
-        <Container sx={{ height: '100%', 'overflow-y': 'auto', my: 2 }} maxWidth="lg">
+        <ContainerStyled maxWidth="lg">
             {children}
-        </Container>
+        </ContainerStyled>
     )
 }
+
+PageContent.propTypes = {
+    children: PropTypes.node.isRequired
+};
 
 export default memo(PageContent)

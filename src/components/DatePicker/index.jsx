@@ -9,6 +9,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ReactComponent as CloseIconComponent } from 'assets/close.svg';
 import IconButton from '@mui/material/IconButton';
+import ptLocale from 'date-fns/locale/pt-BR';
+
+const localeMap = { pt: ptLocale };
+
+
 
 function getWeeksAfter(date, amount) {
     return date ? addWeeks(date, amount) : undefined;
@@ -24,11 +29,12 @@ const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
     }
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap.pt}>
             <Box sx={{ display: 'flex' }} container >
                 <DateRangePicker
-                    startText="Check-in"
-                    endText="Check-out"
+                    locale={'pt'}
+                    startText="Inicio"
+                    endText="Fim"
                     inputFormat='dd/MM/yyyy'
                     value={filterValue}
                     maxDate={getWeeksAfter(filterValue[0], 1)}

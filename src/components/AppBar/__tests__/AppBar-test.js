@@ -3,10 +3,16 @@ import {cleanup, screen, render, fireEvent} from '@testing-library/react';
 import AppBar from '../';
 import { AppProvider } from 'containers/Main/AppContext'
 
-// Note: running cleanup afterEach is done automatically for you in @testing-library/react@9.0.0 or higher
-// unmount and cleanup DOM after the test is finished.
-afterEach(cleanup);
-  describe('AppBar tests', () => {
+const mockedUsedNavigate = jest.fn();
+
+    jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockedUsedNavigate,
+    }));
+
+    describe('AppBar tests', () => {
+
+   
     
     it('should render the name sent as prop', () => {
         const component = render(

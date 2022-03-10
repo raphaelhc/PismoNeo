@@ -26,8 +26,8 @@ it('should be possible to set a start and checkout and call the function sent as
   const handleClick = jest.fn()
   render(<MinMaxDateRangePicker filterValue={[null, null]} setfilterValue={handleClick} />);
 
-  const startDateInput = await screen.findByRole('textbox', { name: /Check-in/i });
-  const endDateInput = screen.getByRole('textbox', { name: /Check-out/i });
+  const startDateInput = await screen.findByRole('textbox', { name: /Inicio/i });
+  const endDateInput = screen.getByRole('textbox', { name: /Fim/i });
 
   userEvent.clear(startDateInput);
   await userEvent.type(startDateInput, '06-01-2020', { delay: 1 });
@@ -38,6 +38,6 @@ it('should be possible to set a start and checkout and call the function sent as
 
   expect(handleClick).toHaveBeenCalled()
 
-  expect(screen.getByRole('textbox', { name: /Check-in/i })).toHaveValue('06/01/2020');
-  expect(screen.getByRole('textbox', { name: /Check-out/i })).toHaveValue('09/01/2020');
+  expect(screen.getByRole('textbox', { name: /Inicio/i })).toHaveValue('06/01/2020');
+  expect(screen.getByRole('textbox', { name: /Fim/i })).toHaveValue('09/01/2020');
 });

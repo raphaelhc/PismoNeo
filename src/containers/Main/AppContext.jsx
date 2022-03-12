@@ -1,9 +1,7 @@
-import React, { useState, createContext, useContext, memo } from "react";
+import React, { useState, createContext, useContext, memo, Fragment } from "react";
 import PropTypes from 'prop-types';
-import { ThemeProvider } from '@emotion/react'
-import { createTheme } from '@mui/material/styles';
+import { ThemeCustomProvider } from './ThemeContext'
 import useLoading from './LoadingContext'
-import { theme } from 'common/theme'
 import ErrorAlert from './ErrorAlert'
 
 const initialState = {
@@ -18,21 +16,22 @@ const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const { setLoading } = useLoading()
-  const [screenMode, setScreenMode] = useState('light');
-
-  const updatedTheme = createTheme({ ...theme, palette: { ...theme.palette, mode: screenMode } })
 
   const request = (apiRequest) => {
     setLoading(true)
     return apiRequest()?.then((data) => data).catch((error) => setError(error)).finally(() => setLoading(false))
   }
 
+  const [values] = useState({ request });
+
   return (
-    <AppContext.Provider value={{ screenMode, setScreenMode, request }}>
-      <ThemeProvider theme={updatedTheme}>
-        {children}
-        <ErrorAlert error={error} setError={setError} />
-      </ThemeProvider>
+    <AppContext.Provider value={values}>
+      <ThemeCustomProvider>
+        <Fragment>
+          {children}
+          <ErrorAlert error={error} setError={setError} />
+        </Fragment>
+      </ThemeCustomProvider>
     </AppContext.Provider>
   );
 };

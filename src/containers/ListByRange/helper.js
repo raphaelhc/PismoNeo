@@ -1,3 +1,5 @@
+import { format } from 'date-fns-tz';
+
 export const getEstimatedDiameter = (obj) => {
     const estimated = { 
         max: Number(obj.estimated_diameter?.kilometers.estimated_diameter_max).toFixed(3),
@@ -11,4 +13,12 @@ export const getTabObject = ({ near_earth_objects }) => {
       ({ value: item, label: item.split('-').reverse().join('/') })
     );
     return tabsArray
+  }
+
+  export const formatData = (value) => {
+      if (!value){
+        return null
+      }
+
+      return format(value, 'yyyy-MM-dd')
   }

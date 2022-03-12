@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import Typography from '@mui/material/Typography';
 import Card from 'components/Card'
 import PropTypes from 'prop-types';
@@ -25,7 +25,9 @@ const BasicCard = ({ object, onSelectItem }) => {
                 <Typography component="span" sx={{ mb: 1.5 }} color="text.secondary">
                     Oferece risco:
                 </Typography>
-                <Typography color={hasHazardousText[object?.is_potentially_hazardous_asteroid].color} component="span" sx={{ ml: 1, 'fontWeight': '600' }} variant="subtitle2" gutterBottom>
+                <Typography
+                    color={hasHazardousText[object?.is_potentially_hazardous_asteroid].color}
+                    component="span" sx={{ ml: 1, 'fontWeight': '600' }} variant="subtitle2" gutterBottom>
                     {hasHazardousText[object?.is_potentially_hazardous_asteroid].label}
                 </Typography>
             </div>
@@ -39,4 +41,4 @@ BasicCard.propTypes = {
     object: PropTypes.object,
 };
 
-export default BasicCard
+export default memo(BasicCard)

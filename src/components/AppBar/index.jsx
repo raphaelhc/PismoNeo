@@ -4,14 +4,14 @@ import { default as Bar } from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import { ReactComponent as SunIconComponent } from 'assets/sun-warm.svg';
 import { ReactComponent as MoonIconComponent } from 'assets/moon-black.svg';
-import { useScreenMode } from 'containers/Main/AppContext'
+import { useTheme } from 'containers/Main/ThemeContext'
 import Typography from '@mui/material/Typography';
 import { ToolbarStyled, BoxStyled } from './styles'
 import { themeModeArray } from 'common/theme'
 import Menu from 'components/Menu'
 
 const AppBar = ({ title }) => {
-    const { screenMode, setScreenMode } = useScreenMode(themeModeArray[0]);
+    const { screenMode, setScreenMode } = useTheme();
     const isLigthMode = screenMode === themeModeArray[0]
     const getColorMode = isLigthMode ? themeModeArray[1] : themeModeArray[0]
 

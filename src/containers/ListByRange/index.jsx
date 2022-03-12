@@ -1,6 +1,5 @@
 import React, { memo, useState } from 'react'
 import PismoNEO from 'resources/pismoneo'
-import { format } from 'date-fns-tz';
 import AppBar from 'components/AppBar'
 import PageBar from 'components/PageBar'
 import Card from './Card'
@@ -12,8 +11,7 @@ import PageContent from 'components/PageContent'
 import { ReactComponent as SearchIconComponent } from 'assets/search.svg';
 import Placeholder from 'components/Placeholder'
 import ObjectDetail from './ObjectDetailModal'
-import { getTabObject } from './helper'
-
+import { getTabObject, formatData } from './helper'
 
 const ListByRange = () => {
   const [filterValue, setfilterValue] = useState([null, null]);
@@ -22,8 +20,8 @@ const ListByRange = () => {
   const { request } = useRequest();
 
   const onSearch = () => {
-    const startDate = filterValue[0] && format(filterValue[0], 'yyyy-MM-dd')
-    const endDate = filterValue[1] && format(filterValue[1], 'yyyy-MM-dd')
+    const startDate = formatData(filterValue[0])
+    const endDate = formatData(filterValue[1])
 
     request(() => PismoNEO.getNeoByRange(startDate, endDate)).then((data) => {
       setNeoData({ ...data, tabData: getTabObject(data), selectedTab: getTabObject(data)[0].value })

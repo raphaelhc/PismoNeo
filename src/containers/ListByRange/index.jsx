@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-import React, { memo, useCallback, useState } from 'react'
+import React, { memo, useState } from 'react'
 import PismoNEO from 'resources/pismoneo'
 import { format } from 'date-fns-tz';
 import AppBar from 'components/AppBar'
 import PageBar from 'components/PageBar'
 import Card from './Card'
 import Filter from './Filter'
-import useRequest from "../Main/AppContext";
+import { useRequest } from "containers/Main/AppContext";
 import Tabs from 'components/Tabs'
 import Grid from 'components/Grid';
 import PageContent from 'components/PageContent'
@@ -24,6 +23,7 @@ const ListByRange = () => {
   const onSearch = () => {
     const startDate = filterValue[0] && format(filterValue[0], 'yyyy-MM-dd')
     const endDate = filterValue[1] && format(filterValue[1], 'yyyy-MM-dd')
+
     request(() => PismoNEO.getNeoByRange(startDate, endDate)).then((data) => {
       setNeoData({ ...data, tabData: getTabObject(data), selectedTab: getTabObject(data)[0].value })
     })
@@ -57,7 +57,6 @@ const ListByRange = () => {
       </Grid>
     )
   }
-
 
   const renderPlaceHolder = () => <Placeholder icon={SearchIconComponent} text="Selecione um intervalo de até 7 (sete) dias para pesquisar os objetos" />
 

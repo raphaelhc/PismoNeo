@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AppProvider } from './AppContext'
+import AppProvider from './AppContext'
 import { LoadingProvider } from './LoadingContext'
 import ListByRange from 'containers/ListByRange'
 import About from 'containers/About'

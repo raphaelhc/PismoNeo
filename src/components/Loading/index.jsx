@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { BoxStyled, WrapperStyled } from './styles'
 
 
-const Loading = () => {
-  return (
+const Loading = ({ loading }) => {
+  return loading && (
     <BoxStyled>
       <WrapperStyled>
         <CircularProgress thickness={5} />

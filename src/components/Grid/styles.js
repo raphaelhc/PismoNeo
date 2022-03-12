@@ -9,5 +9,4 @@ export const BoxStyled = styled(Box)`
 export const GridStyled = styled(Grid)`
     overflow-x: hidden;
     overflow-y: auto;
-    align-content: baseline;
 `

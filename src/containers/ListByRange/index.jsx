@@ -12,6 +12,7 @@ import PageContent from 'components/PageContent'
 import { ReactComponent as SearchIconComponent } from 'assets/search.svg';
 import Placeholder from 'components/Placeholder'
 import ObjectDetail from './ObjectDetailModal'
+import { getTabObject } from './helper'
 
 
 const ListByRange = () => {
@@ -36,13 +37,6 @@ const ListByRange = () => {
   const onSetFilter = (value) => {
     setfilterValue(value);
   };
-
-  const getTabObject = ({ near_earth_objects }) => {
-    const tabsArray = Object.keys(near_earth_objects)?.sort().map(item =>
-      ({ value: item, label: item.split('-').reverse().join('/') })
-    );
-    return tabsArray
-  }
 
   const renderCards = () => {
     const data = neoData?.near_earth_objects[neoData.selectedTab]

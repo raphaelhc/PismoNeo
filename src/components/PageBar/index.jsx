@@ -10,9 +10,9 @@ const PageBar = ({ pageName, children }) => {
             <div >
                 <Paper elevation={3}>
                     <ToolbarStyled variant="dense">
-                        <Typography color='primary' sx={{ 'fontWeight': '600', 'minWidth': '9rem' }}>
+                        {pageName && <Typography color='primary' sx={{ 'fontWeight': '600', 'minWidth': '9rem' }}>
                             {pageName}
-                        </Typography>
+                        </Typography>}
                         {children}
                     </ToolbarStyled>
                 </Paper>

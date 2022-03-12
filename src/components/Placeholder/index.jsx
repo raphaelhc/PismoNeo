@@ -1,20 +1,19 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types';
-import { CardStyled } from './styles'
-import Box from '@mui/material/Box';
+import { CardStyled, BoxStyled } from './styles'
 import Typography from '@mui/material/Typography';
 
 
 const Placeholder = ({ text, icon: Icon }) => {
     return (
-        <Box sx={{ height: '100%', display: 'flex' }}>
+        <BoxStyled>
             <CardStyled>
                 {Icon && <div><Icon /></div>}
                 <Typography component="span" sx={{ fontSize: 14 }} gutterBottom >
                     {text}
                 </Typography>
             </CardStyled>
-        </Box>
+        </BoxStyled>
     )
 }
 

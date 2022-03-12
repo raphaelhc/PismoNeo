@@ -5,3 +5,10 @@ export const getEstimatedDiameter = (obj) => {
     }
     return estimated
 }
+
+export const getTabObject = ({ near_earth_objects }) => {
+    const tabsArray = Object.keys(near_earth_objects)?.sort().map(item =>
+      ({ value: item, label: item.split('-').reverse().join('/') })
+    );
+    return tabsArray
+  }

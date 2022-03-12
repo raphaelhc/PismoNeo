@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, memo } from "react";
+import PropTypes from 'prop-types';
 import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles';
-import PropTypes from 'prop-types';
 import useLoading from './LoadingContext'
 import { theme } from 'common/theme'
 import ErrorAlert from './ErrorAlert'
@@ -53,4 +53,4 @@ AppProvider.propTypes = {
   children: PropTypes.object
 };
 
-export default memo(AppProvider, (prev, next) => console.log(prev, next));
+export default memo(AppProvider);

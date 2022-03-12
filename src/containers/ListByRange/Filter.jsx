@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import BasicDateRangePicker from 'components/DatePicker'
 import Button from '@mui/material/Button';
@@ -16,5 +16,11 @@ const Filter = ({ setfilterValue, onSearch, filterValue }) => {
         </React.Fragment >
     );
 }
+
+Filter.propTypes = {
+    setfilterValue: PropTypes.func,
+    onSearch: PropTypes.func,
+    filterValue: PropTypes.array
+};
 
 export default memo(Filter)

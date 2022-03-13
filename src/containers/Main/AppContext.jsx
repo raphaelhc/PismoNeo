@@ -42,12 +42,6 @@ export const useRequest = () => {
   return context;
 };
 
-export const useScreenMode = () => {
-  const { screenMode, setScreenMode } = useContext(AppContext);
-
-  return { screenMode, setScreenMode };
-};
-
 AppProvider.propTypes = {
   children: PropTypes.object
 };

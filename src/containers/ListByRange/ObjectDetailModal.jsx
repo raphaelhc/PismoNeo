@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
@@ -6,7 +5,6 @@ import Link from '@mui/material/Link';
 import Modal from 'components/Modal'
 import { hasHazardousText } from './constant'
 import { getEstimatedDiameter } from './helper'
-
 
 function ObjectDetail(props) {
     const { onClose, open, itemSelected } = props;
@@ -55,7 +53,8 @@ function ObjectDetail(props) {
 
 ObjectDetail.propTypes = {
     onClose: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    itemSelected: PropTypes.object,
 };
 
 export default ObjectDetail

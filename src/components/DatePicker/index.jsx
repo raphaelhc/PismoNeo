@@ -13,21 +13,11 @@ import ptLocale from 'date-fns/locale/pt-BR';
 
 const localeMap = { pt: ptLocale };
 
-
-
 function getWeeksAfter(date, amount) {
-    return date ? addWeeks(date, amount) : undefined;
+    return date ? addWeeks(date, amount) : null;
 }
 
 const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
-    // eslint-disable-next-line no-unused-vars
-    const [value, setValue] = React.useState([null, null]);
-
-    const seta = (newValue) => {
-        setValue(newValue);
-        setfilterValue(newValue);
-    }
-
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap.pt}>
             <Box sx={{ display: 'flex' }} container >
@@ -39,9 +29,7 @@ const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
                     value={filterValue}
                     maxDate={getWeeksAfter(filterValue[0], 1)}
                     minDate={null}
-                    onChange={(newValue) => {
-                        seta(newValue);
-                    }}
+                    onChange={setfilterValue}
                     renderInput={(startProps, endProps) => (
                         <React.Fragment>
                             <TextField {...startProps} size="small" color="primary" role="textbox" focused />
@@ -52,7 +40,7 @@ const MinMaxDateRangePicker = ({ filterValue, setfilterValue }) => {
                         </React.Fragment>
                     )}
                 />
-                <IconButton disableRipple aria-label="delete" size="small" onClick={() => seta([null, null])}>
+                <IconButton disableRipple aria-label="delete" size="small" onClick={() => setfilterValue([null, null])}>
                     <CloseIconComponent />
                 </IconButton>
             </Box>

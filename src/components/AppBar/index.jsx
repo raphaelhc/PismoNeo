@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types';
 import { default as Bar } from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
@@ -37,4 +37,4 @@ AppBar.propTypes = {
     title: PropTypes.string
 };
 
-export default AppBar
+export default memo(AppBar)
